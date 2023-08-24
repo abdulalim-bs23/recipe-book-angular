@@ -1,0 +1,17 @@
+
+<div class="container">
+
+  <h4>Create Server</h4>
+
+  <app-cockpit (serverElement)="receiveServer($event)"></app-cockpit> 
+
+<br>
+<br>
+<hr>
+  <h4>Server List</h4>
+
+  <div *ngFor="let server of servers">
+<app-server [element]="server"></app-server>
+  </div>
+
+</div>

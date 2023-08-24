@@ -1,0 +1,8 @@
+
+/* assets/fonts.css */
+@font-face {
+  font-family: 'Muli';
+  src: url('./fonts/Muli-Regular.ttf') format('truetype');
+  /* Adjust the path to your font file */
+  /* Include additional font weights and styles as needed */
+}
