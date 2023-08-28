@@ -1,5 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { LoggingService } from './logging.service';
+import { EventEmitter, Injectable } from '@angular/core'; 
 import { Ingredient } from '../Shared/ingredient.model';
 import { Recipe } from '../recipes/recipe.model';
 import { Observable, of } from 'rxjs';

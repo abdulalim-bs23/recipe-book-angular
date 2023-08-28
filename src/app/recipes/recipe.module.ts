@@ -22,11 +22,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeItemComponent,
-    RecipeDetailComponent,
-    HighlightDirective,  
+    // RecipesComponent,
+    // RecipeListComponent,
+    // RecipeItemComponent,
+    // RecipeDetailComponent,
+    // HighlightDirective,  
   ],
   imports: [
     //RouterModule.forChild(routes),

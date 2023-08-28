@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/complete-guide-angular",
+    "public": "/dist/complete-guide-angular",
     "ignore": [
       "firebase.json",
       "**/.*",

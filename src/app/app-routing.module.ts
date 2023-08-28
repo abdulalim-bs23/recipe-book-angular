@@ -9,14 +9,19 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 
 const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full' },
-  { path: 'shopping-list', component: ShoppingListComponent },
+  {
+    path: 'shopping-list',
+    component: ShoppingListComponent,
+    canActivate: [AuthGuardService],
+  },
   { path: 'auth', component: AuthComponent },
   {
-    path: '',
+    path: 'recipes',
     component: RecipesComponent,
     canActivate: [AuthGuardService],
     children: [{ path: ':id', component: RecipeDetailComponent }],
   },
+  { path: 'recipes/:name', component: RecipesComponent },
   // {
   //   path: 'recipes',
   //   loadChildren: () =>

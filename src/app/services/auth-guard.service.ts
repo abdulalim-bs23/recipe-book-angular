@@ -27,7 +27,7 @@ export class AuthGuardService {
     const userDataString = localStorage.getItem('userData');
     if (userDataString != null) {
       const userData = JSON.parse(userDataString);
-      console.log(userData);
+     // console.log(userData);
 
       if (userData.id && userData.id.length > 0) {
         this.isAuthenticated = true;
@@ -36,7 +36,7 @@ export class AuthGuardService {
 
     this.authService.user.subscribe(
       (user) => {
-        console.log(user);
+     //   console.log(user);
         if (user.id != undefined && user.id.length > 0) {
           this.isAuthenticated = true;
         }

@@ -18,8 +18,10 @@ export class RecipeDetailComponent {
     private recipeService: RecipeService
   ) {}
   ngOnInit() {
+    console.log('from recipe detail');
     this.router.params.subscribe(async (params) => {
       this.routeParamId = params['id']; 
+      console.log(this.routeParamId);
       this.recipeItem = await this.recipeService.getRecipeByRecipeId(this.routeParamId); 
     });
 

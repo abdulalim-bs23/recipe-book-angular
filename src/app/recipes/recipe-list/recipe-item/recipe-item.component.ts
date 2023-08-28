@@ -18,7 +18,8 @@ export class RecipeItemComponent {
   }
   onClickItem() { 
     // this.outRecipeItem.emit(this.recipeItem);
-   // this.recipeService.sendRecipe.emit(this.recipeItem);
+   //  this.recipeService.sendRecipe.emit(this.recipeItem);
+    console.log('btn clicked');
     this.isHighlighted = true;
     this.router.navigate([
       '/recipes',

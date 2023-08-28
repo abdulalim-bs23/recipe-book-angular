@@ -1,23 +1,33 @@
-<div class="container" *ngIf="recipeItem" style="margin: 20%;">
-  <div class="row">
-    <div class="col-md-8">
-      <h3>{{ recipeItem.name }}</h3>
-      <h5>{{ recipeItem.description }}</h5>
+<div class="container" style="margin: 20%">
+  <div *ngIf="!!recipeItem; else elseBlock">
+    <div class="row">
+      <div class="col-md-8">
+        <h3>{{ recipeItem.name }}</h3>
+        <h5>{{ recipeItem.description }}</h5>
+      </div>
     </div>
+    <div class="row">
+      <img
+        src="{{ recipeItem.imagePath }}"
+        alt="Recipe Image"
+        class="img-fluid"
+        style="max-width: 400px"
+      />
+    </div>
+
+    <ul class="list-group mt-2">
+      <li
+        class="list-group-item"
+        *ngFor="let ingredient of recipeItem.ingredients"
+      >
+        {{ ingredient.name + " (" + ingredient.amount + ")" }}
+      </li>
+    </ul>
+    <label style="font-weight: 500">Router param: </label> {{ routeParamId }}
+    <label style="font-weight: 500">Query param: </label> {{ queryParam }}
   </div>
-  <div class="row">
-    <img
-      src="{{ recipeItem.imagePath }}"
-      alt="Recipe Image"
-      class="img-fluid"
-      style="max-width: 400px"
-    />
-  </div>
-<ul class="list-group mt-2">
-  <li class="list-group-item" *ngFor="let ingredient of recipeItem.ingredients">
-    {{ ingredient.name + ' (' + ingredient.amount+')' }}
-  </li>
-</ul>
-<label style="font-weight: 500;">Router param: </label> {{routeParamId}}
-<label style="font-weight: 500;">Query param: </label> {{queryParam}}
+  <ng-template #elseBlock>
+  <h2>Please select a recipe</h2>
+</ng-template>
 </div>
+

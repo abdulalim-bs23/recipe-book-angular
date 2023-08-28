@@ -15,6 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 import { RecipeModule } from './recipes/recipe.module';
+import { RecipesComponent } from './recipes/recipes.component';
+import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
+import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
+import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
+import { HighlightDirective } from './Shared/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -29,14 +34,19 @@ import { RecipeModule } from './recipes/recipe.module';
     PageNotFountComponent,
     AuthComponent,
     LoadingSpinnerComponent,
+    RecipesComponent,
+    RecipeListComponent,
+    RecipeItemComponent,
+    RecipeDetailComponent,
+    HighlightDirective,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    RecipeModule,
+    //  RecipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
