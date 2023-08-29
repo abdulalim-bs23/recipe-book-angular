@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<!-- <div class="container mt-5">
   <div *ngIf="isLoading" style="text-align: center;">
     <app-loading-spinner></app-loading-spinner>
   </div>
@@ -60,5 +60,84 @@
      <p> {{successMessage}}</p>
     </div>    
     </div>   
+  </div>
+</div> -->
+
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div *ngIf="isLoading" style="text-align: center">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+      <div
+        class="login100-form-title"
+        style="background-image: url(../../../assets/bg-01.jpg)"
+      >
+        <span class="login100-form-title-1">
+          {{ loginMode ? "Login" : "SignUp" }}</span
+        >
+      </div>
+      <div></div>
+      <form
+        class="login100-form"
+        #authForm="ngForm"
+        (ngSubmit)="onSubmit(authForm)"
+      >
+        <div
+          class="wrap-input100 validate-input m-b-26"
+          data-validate="Username is required"
+        >
+          <span class="label-input100">Email</span>
+          <input
+            class="input100"
+            type="text"
+            name="email"
+            ngModel
+            required
+            placeholder="Enter username"
+          />
+          <span class="focus-input100"></span>
+        </div>
+        <div
+          class="wrap-input100 validate-input m-b-18"
+          data-validate="Password is required"
+        >
+          <span class="label-input100">Password</span>
+          <input
+            class="input100"
+            type="password"
+            name="password"
+            ngModel
+            placeholder="Enter password"
+          />
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="flex-sb-m w-full p-b-30">
+          <div class="container-login100-form-btn">
+            <button
+              type="submit"
+              class="login100-form-btn"
+              [disabled]="!authForm.valid"
+              disabled
+            >
+              {{ loginMode ? "Login" : "SignUp" }}
+            </button>
+
+            <button
+              (click)="onSwitchMode()"
+              type="button"
+              class="login100-form-btn"
+              style="margin-left: 12%; background-color: rgb(132, 10, 10)"
+            >
+              Switch to {{ !loginMode ? "Login" : "SignUp" }}
+            </button>
+          </div>
+        </div>
+        <div class="alert alert-danger mt-3 p-2" *ngIf="errorMessage">
+          <p>{{ errorMessage }}</p>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

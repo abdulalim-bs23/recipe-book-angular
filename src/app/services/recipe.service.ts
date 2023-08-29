@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core'; 
+import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../Shared/ingredient.model';
 import { Recipe } from '../recipes/recipe.model';
 import { Observable, of } from 'rxjs';
@@ -13,6 +13,7 @@ export default class RecipeService {
       'A test recipe 1',
       'This is a test recipe',
       'https://rb.gy/z2w4r',
+      '',
       [new Ingredient('Apples', 3), new Ingredient('Banana', 4)]
     ),
     new Recipe(
@@ -20,6 +21,7 @@ export default class RecipeService {
       'A test recipe 2',
       'This is a test recipe',
       'https://rb.gy/t6c48',
+      '',
       [new Ingredient('Apples', 3), new Ingredient('Banana', 4)]
     ),
   ];

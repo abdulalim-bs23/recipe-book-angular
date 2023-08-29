@@ -34,7 +34,7 @@ export class AuthService {
       })
     );
   }
-  
+
   signIn(email: string, password: string): Observable<any> {
     const url = this.baseUrl + 'signInWithPassword' + '?key=' + this.key;
     const payLoad = {
@@ -77,10 +77,11 @@ export class AuthService {
     }
     this.expirationTimer = null;
   }
-  autoLogIn() {
 
+  autoLogIn() {
     const userDataString = localStorage.getItem('userData');
     if (userDataString != null) {
+
       const userData = JSON.parse(userDataString);
       console.log(userData);
       this.user.next(userData);
@@ -91,6 +92,7 @@ export class AuthService {
       this.autoLogOut(tokenExpirationTime);
     }
   }
+  
   autoLogOut(tokenExpirationTime: number) {
     this.expirationTimer = setTimeout(() => {
       this.logOut();

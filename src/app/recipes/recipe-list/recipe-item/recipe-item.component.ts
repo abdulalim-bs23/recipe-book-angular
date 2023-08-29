@@ -23,7 +23,7 @@ export class RecipeItemComponent {
     this.isHighlighted = true;
     this.router.navigate([
       '/recipes',
-      this.recipeItem?.id      
+      this.recipeItem?.key      
     ]);
   }
 }

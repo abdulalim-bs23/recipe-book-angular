@@ -1,0 +1,16 @@
+/* Custom card hover effect */
+.custom-card {
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  cursor: pointer;
+  height: 300px;
+    width: 235px;
+    border-radius: 10px;
+    background-color: beige;
+    box-shadow: 0px 2px 4px rgba(203, 19, 19, 0.2);
+}
+
+.custom-card:hover {
+  transform: scale(1.05); 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+  background-color: #f4d070; 
+}

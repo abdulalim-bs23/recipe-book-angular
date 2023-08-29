@@ -7,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HighlightDirective } from '../Shared/highlight.directive';
 import { AuthGuardService } from '../services/auth-guard.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeRoutingModule } from './recipe-routing.module';
 
 const routes: Routes = [
@@ -26,14 +26,14 @@ const routes: Routes = [
     // RecipeListComponent,
     // RecipeItemComponent,
     // RecipeDetailComponent,
-    // HighlightDirective,  
+    // HighlightDirective,
   ],
   imports: [
     //RouterModule.forChild(routes),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RecipeRoutingModule
+    RecipeRoutingModule,
   ],
   exports: [],
   providers: [],

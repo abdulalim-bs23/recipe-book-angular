@@ -10,8 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent {
-  constructor(private authService: AuthService, private router: Router) {
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   loginMode: boolean = true;
   isLoading = false;
@@ -44,10 +43,27 @@ export class AuthComponent {
       },
       (errorRes) => {
         //console.log(errorRes);
-        this.errorMessage = errorRes.error.error.message; //'An error occurred while!';
+
+        switch (errorRes.error.error.message) {
+          case 'INVALID_EMAIL':
+            this.errorMessage = 'Invalid email, please enter a correct one!';
+            break;
+          case 'EMAIL_EXISTS':
+            this.errorMessage =
+              'This email is already in use, please use a different one.';
+            break;
+          default:
+            this.errorMessage = 'An error occurred. Please try again later.';
+            break;
+        }
+
         this.isLoading = false;
       }
     );
+
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 5000);
 
     form.reset();
   };
