@@ -22,11 +22,7 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { HighlightDirective } from './Shared/highlight.directive';
 import { NewRecipeComponent } from './recipes/new-recipe/new-recipe.component';
 import { TruncatePipe } from './Shared/truncate.pipe';
-import {
-  NgxAwesomePopupModule,
-  ConfirmBoxConfigModule,
-} from '@costlydeveloper/ngx-awesome-popup';
-
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,8 +51,6 @@ import {
     FormsModule,
     ReactiveFormsModule,
     //  RecipeModule,
-    NgxAwesomePopupModule.forRoot(),
-    ConfirmBoxConfigModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

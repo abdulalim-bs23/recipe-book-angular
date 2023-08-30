@@ -2,8 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import RecipeService from 'src/app/services/recipe.service';
-import { HttpService } from 'src/app/services/http.service';
-import { ConfirmBoxEvokeService } from '@costlydeveloper/ngx-awesome-popup';
+import { HttpService } from 'src/app/services/http.service'; 
 
 @Component({
   selector: 'app-recipe-detail',
@@ -19,8 +18,7 @@ export class RecipeDetailComponent {
     private activateRoute: ActivatedRoute,
     private router: Router,
     private recipeService: RecipeService,
-    private httpService: HttpService,
-    private confirmBoxEvokeService: ConfirmBoxEvokeService
+    private httpService: HttpService, 
   ) {}
   ngOnInit() {
     this.activateRoute.params.subscribe(async (params) => {
