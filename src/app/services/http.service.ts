@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
-import { Observable, map } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,13 +12,29 @@ export class HttpService {
 
   constructor(private http: HttpClient) {}
 
+  recipeRouteParam = new Subject<boolean>();
+  updateRecipeItem = new Subject<Recipe>();
+  callRecipeList = new Subject<boolean>();
+
   insertRecipe(recipe: Recipe): Observable<any> {
-    console.log(recipe);
     const url = `${this.baseUrl}recipes.json?${
       this.getTokenParam() == null ? '' : this.getTokenParam()
     }`;
     let res = this.http.post(url, recipe);
     return res;
+  }
+  updateRecipe(recipe: Recipe): Observable<any> {
+    const url = `${this.baseUrl}recipes/${recipe.key}.json?${
+      this.getTokenParam() == null ? '' : this.getTokenParam()
+    }`;
+    let res = this.http.patch(url, recipe);
+    return res;
+  }
+  deleteRecipe(recipeId: string | undefined): Observable<any> {
+    const url = `${this.baseUrl}recipes/${recipeId}.json?${
+      this.getTokenParam() == null ? '' : this.getTokenParam()
+    }`;
+    return this.http.delete(url);
   }
 
   getAllRecipes(): Observable<Recipe[]> {

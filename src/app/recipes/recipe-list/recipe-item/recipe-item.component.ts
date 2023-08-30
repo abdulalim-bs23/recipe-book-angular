@@ -9,21 +9,16 @@ import RecipeService from 'src/app/services/recipe.service';
   styleUrls: ['./recipe-item.component.css'],
 })
 export class RecipeItemComponent {
-  @Input() recipeItem: Recipe | undefined; 
+  @Input() recipeItem: Recipe | undefined;
 
   isHighlighted: boolean = false;
 
-  constructor(private router: Router, private recipeService: RecipeService) {
-    
-  }
-  onClickItem() { 
+  constructor(private router: Router, private recipeService: RecipeService) {}
+  onClickItem() {
     // this.outRecipeItem.emit(this.recipeItem);
-   //  this.recipeService.sendRecipe.emit(this.recipeItem);
-    console.log('btn clicked');
+    //  this.recipeService.sendRecipe.emit(this.recipeItem);
+
     this.isHighlighted = true;
-    this.router.navigate([
-      '/recipes',
-      this.recipeItem?.key      
-    ]);
+    this.router.navigate(['/recipes', this.recipeItem?.key]);
   }
 }

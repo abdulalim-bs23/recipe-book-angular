@@ -3,6 +3,7 @@ import { Recipe } from '../recipe.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import RecipeService from 'src/app/services/recipe.service';
 import { HttpService } from 'src/app/services/http.service';
+import { ConfirmBoxEvokeService } from '@costlydeveloper/ngx-awesome-popup';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -15,24 +16,53 @@ export class RecipeDetailComponent {
   queryParam: string = '';
   recipeItem: Recipe | undefined;
   constructor(
-    private router: ActivatedRoute,
+    private activateRoute: ActivatedRoute,
+    private router: Router,
     private recipeService: RecipeService,
-    private httpService: HttpService
+    private httpService: HttpService,
+    private confirmBoxEvokeService: ConfirmBoxEvokeService
   ) {}
   ngOnInit() {
-    console.log('from recipe detail');
-    this.router.params.subscribe(async (params) => {
+    this.activateRoute.params.subscribe(async (params) => {
       this.routeParamId = params['id'];
       // this.recipeItem = await this.recipeService.getRecipeByRecipeId(this.routeParamId);
-      await this.httpService
-        .getRecipeById(this.routeParamId)
-        .subscribe((data) => {
-          this.recipeItem = data;
-        });
+      this.getRecipeById();
+      this.httpService.recipeRouteParam.next(false);
     });
+    this.httpService.callRecipeList.subscribe((data) => {
+      this.getRecipeById();
+    });
+    // this.router.queryParams.subscribe((params) => {
+    //   this.queryParam = params['name'];
+    // });
+  }
 
-    this.router.queryParams.subscribe((params) => {
-      this.queryParam = params['name'];
-    });
+  onUpdate() {
+    if (this.recipeItem)
+      this.httpService.updateRecipeItem.next(this.recipeItem);
+  }
+  onDelete() {
+    // this.confirmBoxEvokeService
+    //   .danger('Are you sure to delete?', 'Confirm', 'Decline')
+    //   .subscribe((resp) => {
+    //     console.log(resp);
+    //   });
+    if (confirm('Are you sure to delete?')) {
+      this.httpService.deleteRecipe(this.recipeItem?.key).subscribe((data) => {
+        this.httpService.callRecipeList.next(true);
+        this.router.navigate(['/recipes']);
+      });
+    }
+  }
+
+  async getRecipeById() {
+    await this.httpService
+      .getRecipeById(this.routeParamId)
+      .subscribe((data) => {
+        this.recipeItem = data;
+        if (!!this.recipeItem)
+          this.recipeItem.key =
+            this.routeParamId == null ? '' : this.routeParamId;
+      });
   }
 }

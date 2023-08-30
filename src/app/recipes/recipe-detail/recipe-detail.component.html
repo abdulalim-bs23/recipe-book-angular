@@ -1,5 +1,5 @@
 <div class="container" style="margin: 20%">
-  <div *ngIf="!!recipeItem; else elseBlock">
+  <div *ngIf="!!recipeItem">
     <div class="row m-3">
       <img
         src="{{ recipeItem.imagePath }}"
@@ -16,7 +16,14 @@
         <h5 style="color: #bd0808">{{ recipeItem.description }}</h5>
       </div>
     </div>
-
+    <div class="row mt-3 justify-content-end">
+      <div class="col-md-2">
+        <button (click)="onUpdate()" class="btn btn-success">Update</button>
+      </div>
+      <div class="col-md-2">
+        <button (click)="onDelete()" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
     <ul class="list-group mt-2">
       <li
         class="list-group-item"
@@ -25,10 +32,11 @@
         {{ ingredient.name + " (" + ingredient.amount + ")" }}
       </li>
     </ul>
+
     <!-- <label style="font-weight: 500">Router param: </label> {{ routeParamId }}
     <label style="font-weight: 500">Query param: </label> {{ queryParam }} -->
   </div>
-  <ng-template #elseBlock>
+  <!-- <ng-template #elseBlock>
     <h2>Please select a recipe</h2>
-  </ng-template>
+  </ng-template> -->
 </div>

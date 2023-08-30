@@ -3,9 +3,9 @@
     <button
       type="button"
       class="btn btn-primary"
-      m
       data-bs-toggle="modal"
       data-bs-target="#myModal"
+      #openRecipeModal
     >
       New Recipe
     </button>
@@ -16,8 +16,9 @@
     <div class="modal-content">
       <!-- Modal Header -->
       <div class="modal-header">
-        <h5 class="modal-title">New Recipe</h5>
-        <!-- <p class="m-3">{{ currentDate | date : "short" }}</p> -->
+        <h5 class="modal-title">
+          {{ isUpdate ? "Update Recipe" : "New Recipe" }}
+        </h5>
         <button
           type="button"
           class="btn-close"
@@ -29,8 +30,12 @@
       <!-- Modal body -->
       <div class="modal-body">
         <div class="row">
-          <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="form-group">
+          <form
+            class="justify-content-center"
+            [formGroup]="form"
+            (ngSubmit)="onSubmit()"
+          >
+            <div class="form-group m-2">
               <label for="name">Name</label>
               <input
                 type="text"
@@ -49,34 +54,16 @@
                 Name is required.
               </div>
             </div>
-            <!-- <div class="form-group">
-                  <label for="email">Email</label>
-                  <input
-                    type="text"
-                    id="email"
-                    formControlName="email"
-                    class="form-control"
-                    required
-                  />
-                  <div
-                    *ngIf="
-                      form.get('email')?.hasError('email') &&
-                      (form.get('email')?.dirty || form.get('email')?.touched)
-                    "
-                    class="alert alert-danger"
-                  >
-                    Please enter a valid email address.
-                  </div>
-                </div> -->
-            <div class="form-group">
+            <div class="form-group m-2">
               <label for="description">Description</label>
               <textarea
                 id="description"
                 formControlName="description"
                 class="form-control"
+                rows="4"
               ></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group m-2">
               <label for="name">Image Url</label>
               <input
                 type="text"
@@ -84,7 +71,16 @@
                 class="form-control"
               />
             </div>
-            <button type="submit" class="btn btn-primary mt-1">
+            <div class="form-group m-2">
+              <label for="name">Select</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary m-2">
               {{ "Submit" }}
             </button>
           </form>

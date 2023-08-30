@@ -7,7 +7,7 @@
   />
   <div class="card-body">
     <h5 class="card-title">{{ recipeItem?.name }}</h5>
-    <p class="card-text">{{ recipeItem?.description }}</p>
+    <p class="card-text">{{ recipeItem?.description | truncate : 10 }}</p>
   </div>
 </div>
 

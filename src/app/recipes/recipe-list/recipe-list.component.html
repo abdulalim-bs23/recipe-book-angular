@@ -15,6 +15,9 @@
   </div>
 
   <div class="col-md-5">
+    <div *ngIf="isRouteParam" style="margin-top: 30%; margin-left: 30%">
+      <h3>Please select a recipe</h3>
+    </div>
     <router-outlet></router-outlet>
   </div>
 </div>

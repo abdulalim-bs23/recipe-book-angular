@@ -17,10 +17,10 @@ export class Recipe {
     ingredients: Ingredient[]
   ) {
     this.id = id;
-    this.name = name.trim();
-    this.description = description.trim();
-    this.imagePath = imagePath.trim();
-    this.key = key.trim();
+    this.name = name?.trim();
+    this.description = description?.trim();
+    this.imagePath = imagePath?.trim();
+    this.key = key?.trim();
     this.ingredients = ingredients;
   }
 }
