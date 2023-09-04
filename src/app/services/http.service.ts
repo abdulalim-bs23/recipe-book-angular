@@ -15,6 +15,7 @@ export class HttpService {
   recipeRouteParam = new Subject<boolean>();
   updateRecipeItem = new Subject<Recipe>();
   callRecipeList = new Subject<boolean>();
+  loadRecipeDetail = new Subject<string>();
 
   insertRecipe(recipe: Recipe): Observable<any> {
     const url = `${this.baseUrl}recipes.json?${

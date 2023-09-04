@@ -2,17 +2,16 @@ import { NgModule } from '@angular/core';
 import { RecipesComponent } from './recipes.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
-import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
-import { HighlightDirective } from '../Shared/highlight.directive';
-import { AuthGuardService } from '../services/auth-guard.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component'; 
+import { RouterModule, Routes } from '@angular/router'; 
+import { AuthGuardService } from '../services/auth-guard.service'; 
 import { RecipeRoutingModule } from './recipe-routing.module';
+import { NewRecipeComponent } from './new-recipe/new-recipe.component';  
+import { SharedModule } from '../Shared/shared.module';
 
 const routes: Routes = [
   {
-    path: 'recipes',
+    path: '',
     component: RecipesComponent,
     canActivate: [AuthGuardService],
     children: [{ path: ':id', component: RecipeDetailComponent }],
@@ -27,13 +26,14 @@ const routes: Routes = [
     // RecipeItemComponent,
     // RecipeDetailComponent,
     // HighlightDirective,
+    // NewRecipeComponent,
+   // TruncatePipe,
   ],
   imports: [
-    //RouterModule.forChild(routes),
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RecipeRoutingModule,
+    RouterModule.forChild(routes),
+    SharedModule,
+    //RecipeRoutingModule,
+    RouterModule,
   ],
   exports: [],
   providers: [],

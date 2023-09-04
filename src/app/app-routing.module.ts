@@ -6,9 +6,9 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth', pathMatch: 'full' },
   {
     path: 'shopping-list',
     component: ShoppingListComponent,
@@ -27,6 +27,13 @@ const routes: Routes = [
   //   loadChildren: () =>
   //     import('./recipes/recipe.module').then((m) => m.RecipeModule),
   // },
+
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  {
+    path: 'customer',
+    loadChildren: () =>
+      import('./customer/customer.module').then((m) => m.CustomerModule),
+  }, // Customer module
   { path: 'not-found', component: PageNotFountComponent },
   { path: '**', redirectTo: '/not-found' },
 ];

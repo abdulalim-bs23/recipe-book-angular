@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import RecipeService from 'src/app/services/recipe.service';
-import { HttpService } from 'src/app/services/http.service'; 
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -18,17 +18,24 @@ export class RecipeDetailComponent {
     private activateRoute: ActivatedRoute,
     private router: Router,
     private recipeService: RecipeService,
-    private httpService: HttpService, 
+    private httpService: HttpService
   ) {}
   ngOnInit() {
+
+     const recipeId = this.activateRoute.snapshot.paramMap.get('id');
+     console.log(recipeId);
+    if (recipeId) this.routeParamId = recipeId;
+    
     this.activateRoute.params.subscribe(async (params) => {
       this.routeParamId = params['id'];
       // this.recipeItem = await this.recipeService.getRecipeByRecipeId(this.routeParamId);
+
       this.getRecipeById();
       this.httpService.recipeRouteParam.next(false);
     });
     this.httpService.callRecipeList.subscribe((data) => {
       this.getRecipeById();
+     
     });
     // this.router.queryParams.subscribe((params) => {
     //   this.queryParam = params['name'];
@@ -40,11 +47,6 @@ export class RecipeDetailComponent {
       this.httpService.updateRecipeItem.next(this.recipeItem);
   }
   onDelete() {
-    // this.confirmBoxEvokeService
-    //   .danger('Are you sure to delete?', 'Confirm', 'Decline')
-    //   .subscribe((resp) => {
-    //     console.log(resp);
-    //   });
     if (confirm('Are you sure to delete?')) {
       this.httpService.deleteRecipe(this.recipeItem?.key).subscribe((data) => {
         this.httpService.callRecipeList.next(true);
