@@ -21,11 +21,6 @@ export class RecipeDetailComponent {
     private httpService: HttpService
   ) {}
   ngOnInit() {
-
-     const recipeId = this.activateRoute.snapshot.paramMap.get('id');
-     console.log(recipeId);
-    if (recipeId) this.routeParamId = recipeId;
-    
     this.activateRoute.params.subscribe(async (params) => {
       this.routeParamId = params['id'];
       // this.recipeItem = await this.recipeService.getRecipeByRecipeId(this.routeParamId);
@@ -35,7 +30,6 @@ export class RecipeDetailComponent {
     });
     this.httpService.callRecipeList.subscribe((data) => {
       this.getRecipeById();
-     
     });
     // this.router.queryParams.subscribe((params) => {
     //   this.queryParam = params['name'];

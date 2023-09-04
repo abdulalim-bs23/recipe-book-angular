@@ -6,7 +6,6 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 
 const routes: Routes = [
   {
