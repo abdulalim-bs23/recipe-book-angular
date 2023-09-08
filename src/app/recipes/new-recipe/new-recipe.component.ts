@@ -1,8 +1,15 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import RecipeService from 'src/app/services/recipe.service';
 import { Recipe } from '../recipe.model';
+import { Ingredient } from 'src/app/Shared/ingredient.model';
 
 @Component({
   selector: 'app-new-recipe',
@@ -17,7 +24,10 @@ export class NewRecipeComponent {
     private httpService: HttpService
   ) {
     this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern(/^[A-Za-z ]*$/)]],
+      recipeName: [
+        '',
+        [Validators.required, Validators.pattern(/^[A-Za-z ]*$/)],
+      ],
       description: [''],
       imagePath: [''],
       ingredients: this.fb.array([]),
@@ -35,16 +45,20 @@ export class NewRecipeComponent {
   recipes: Recipe[] = [];
   recipeItem: Recipe | undefined;
   isUpdate: boolean = false;
+  recipeIngredients = new FormArray<any>([]);
 
   onSubmit() {
     if (this.form.valid) {
       let newRecipe = new Recipe(
         0,
-        this.form.get('name')?.value,
+        this.form.get('recipeName')?.value,
         this.form.get('description')?.value,
         this.form.get('imagePath')?.value,
         '',
-        []
+        [
+          { name: 'Banana', amount: 11 },
+          { name: 'Apple', amount: 22 },
+        ]
       );
 
       // this.recipeService.insertRecipe(newRecipe);
@@ -73,13 +87,36 @@ export class NewRecipeComponent {
   ngOnInit() {
     this.httpService.updateRecipeItem.subscribe((data) => {
       this.recipeItem = data;
+      console.log(this.recipeItem);
+      for (let ingredient of this.recipeItem.ingredients) {
+        this.recipeIngredients.push(
+          new FormGroup({
+            name: new FormControl(ingredient.name),
+            amount: new FormControl(ingredient.amount),
+          })
+        );
+      }
       this.form = this.fb.group({
-        name: [data.name],
+        recipeName: [data.name],
         description: [data.description],
         imagePath: [data.imagePath],
+        ingredients: this.recipeIngredients,
       });
+
       this.openRecipeModal?.nativeElement.click();
       this.isUpdate = true;
     });
+  }
+
+  removeIngredient() {
+    console.log('aaaaaaaaaa');
+  }
+  addIngredient() {
+    const newIngredientGroup = new FormGroup({
+      name: new FormControl(''),
+      amount: new FormControl(''),
+    });
+    // Push the new FormGroup to the FormArray
+    this.recipeIngredients.push(newIngredientGroup);
   }
 }

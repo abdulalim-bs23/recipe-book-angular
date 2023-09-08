@@ -20,6 +20,8 @@ import { HighlightDirective } from './Shared/highlight.directive';
 import { NewRecipeComponent } from './recipes/new-recipe/new-recipe.component';  
 import { CustomerModule } from './customer/customer.module';
 import { SharedModule } from './Shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { SharedModule } from './Shared/shared.module';
     AppRoutingModule,
     //RecipeModule,
     CustomerModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

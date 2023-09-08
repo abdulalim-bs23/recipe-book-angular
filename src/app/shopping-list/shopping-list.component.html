@@ -1,18 +1,22 @@
-
 <div class="row mt-3">
-<h4 class="header">Ingredients</h4>
+  <h4 class="header">Ingredients</h4>
 </div>
 
 <div class="row mt-2">
   <div class="col-xs-10">
-    <app-shopping-edit (outIngredient)="onReceiveIngredient($event)"></app-shopping-edit>
-    <hr>
+    <app-shopping-edit
+      (outIngredient)="onReceiveIngredient($event)"
+    ></app-shopping-edit>
+    <hr />
     <ul class="list-group">
-      <a class="list-group-item" style="cursor: pointer;" (click)="onEdit(i)"
-      *ngFor="let ingredient of ingredients; let i =index"
+      <a
+        class="list-group-item"
+        style="cursor: pointer"
+        (click)="onEdit(i)"
+        *ngFor="let ingredient of ingredients; let i = index"
       >
-    {{ ingredient.name }} ({{ ingredient.amount }})
-    </a>
+        {{ ingredient.name }} ({{ ingredient.amount }})
+      </a>
     </ul>
   </div>
 </div>

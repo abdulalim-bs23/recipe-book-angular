@@ -15,6 +15,14 @@
         </div>
         <h5 style="color: #bd0808">{{ recipeItem.description }}</h5>
       </div>
+      <ul class="list-group mt-2">
+      <li
+        class="list-group-item"
+        *ngFor="let ingredient of recipeItem.ingredients"
+      >
+        {{ ingredient.name + " (" + ingredient.amount + ")" }}
+      </li>
+    </ul>
     </div>
     <div class="row mt-3 justify-content-end">
       <div class="col-md-2">
@@ -24,14 +32,7 @@
         <button (click)="onDelete()" class="btn btn-danger">Delete</button>
       </div>
     </div>
-    <ul class="list-group mt-2">
-      <li
-        class="list-group-item"
-        *ngFor="let ingredient of recipeItem.ingredients"
-      >
-        {{ ingredient.name + " (" + ingredient.amount + ")" }}
-      </li>
-    </ul>
+    
 
     <!-- <label style="font-weight: 500">Router param: </label> {{ routeParamId }}
     <label style="font-weight: 500">Query param: </label> {{ queryParam }} -->

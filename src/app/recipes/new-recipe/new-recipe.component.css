@@ -1,0 +1,17 @@
+label{
+  font-weight: 600;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: 600;
+}
+.custom-modal-dialog {
+  max-width: 70%; 
+  height: 600px; 
+  margin: 1rem auto;
+  /* Center the modal horizontally */
+}
+btn-icon{
+  font-size: 40px;
+  height: 110px;
+  width: 50px !important;
+}
