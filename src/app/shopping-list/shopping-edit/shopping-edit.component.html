@@ -30,11 +30,11 @@
 
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" [disabled]="!f.valid">
+          <button type="submit" mat-raised-button [disabled]="!f.valid" style="background-color: forestgreen; color: white;">
           {{editMode? 'Update': 'Add'}}
           </button>
-          <button type="button" class="btn btn-danger m-1" (click)="onDelete()" *ngIf="editMode">Delete</button>
-          <button type="button" class="btn btn-primary" (click)="onClear()" [ngStyle]="{'margin': !editMode? '5px': ''}">Clear</button>
+          <button type="button" mat-raised-button color="warn" class="m-1" (click)="onDelete()" *ngIf="editMode">Delete</button>
+          <button type="button" mat-raised-button color="accent" (click)="onClear()" [ngStyle]="{'margin': !editMode? '5px': ''}">Clear</button>
         </div>
       </div>
     </form>

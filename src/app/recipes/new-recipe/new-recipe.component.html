@@ -2,10 +2,12 @@
   <div class="col-md-3" style="margin-left: 70%; margin-bottom: 5%">
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-secondary"
+      color="primary"
       data-bs-toggle="modal"
       data-bs-target="#myModal"
       #openRecipeModal
+      style="background-color: rgb(63, 63, 255)"
     >
       New Recipe
     </button>
@@ -72,59 +74,62 @@
               />
             </div>
             <br /><br />
-            <label class="mt-2">Ingredients</label><br />
-            <div class="col-md-12 m-2" formArrayName="ingredients">
-              <div
-                class="row m-1"
+            <!-- <label class="mt-2">Ingredients</label><br /> -->
+            <ng-container formArrayName="ingredients">
+              <ng-container
                 *ngFor="
-                  let ingredientGroup of form.get('ingredients')?.value;
+                  let ingredientForm of recipeIngredients.controls;
                   let i = index
                 "
-                [formGroupName]="i"
               >
-                <div class="col-md-6">
-                  <input
-                    type="text"
-                    [formControlName]="'name'"
-                    class="form-control"
-                    placeholder="Name"
-                  />
+                <div class="col-md-12 m-2">
+                  <div class="row m-1" [formGroupName]="i">
+                    <div class="col-md-6">
+                      <input
+                        type="text"
+                        formControlName="name"
+                        class="form-control"
+                        placeholder="Name"
+                      />
+                    </div>
+                    <div class="col-md-2">
+                      <input
+                        type="number"
+                        formControlName="amount"
+                        class="form-control"
+                        placeholder="Amount"
+                      />
+                    </div>
+                    <div class="col-md-1">
+                      <button
+                        type="button"
+                        mat-icon-button
+                        color="warn"
+                        (click)="removeIngredient(i)"
+                      >
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-2">
-                  <input
-                    type="number"
-                    [formControlName]="'amount'"
-                    class="form-control"
-                    placeholder="Amount"
-                  />
-                </div>
-                <div class="col-md-1">
-                  <button
-                    (click)="removeIngredient()"
-                    class="btn-icon"
-                    type="button"
-                    mat-icon-button
-                    color="warn"
-                  >
-                    <mat-icon>remove_circle</mat-icon>
-                  </button>
-                </div>
-                <div class="col-md-1 btn-icon">
-                  <button
-                    type="button"
-                    mat-icon-button
-                    color="primary"
-                    (click)="addIngredient()"
-                  >
-                    <mat-icon>add_circle</mat-icon>
-                  </button>
-                </div>
-              </div>
+              </ng-container>
+            </ng-container>
+            <div class="col-md-2">
+              <button
+                mat-raised-button
+                type="button"
+                color="primary"
+                (click)="addIngredient()"
+                style="background-color: teal"
+              >
+                <mat-icon>add</mat-icon> Ingredient
+              </button>
             </div>
-
-            <button type="submit" mat-raised-button color="primary">
-              Submit
-            </button>
+            <div style="float: right; margin-right: 3%">
+              <button type="submit" mat-raised-button color="primary">
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>
