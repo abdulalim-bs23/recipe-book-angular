@@ -10,6 +10,7 @@ import { HttpService } from 'src/app/services/http.service';
 import RecipeService from 'src/app/services/recipe.service';
 import { Recipe } from '../recipe.model';
 import { Ingredient } from 'src/app/Shared/ingredient.model';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-new-recipe',
@@ -19,7 +20,7 @@ import { Ingredient } from 'src/app/Shared/ingredient.model';
 export class NewRecipeComponent {
   @ViewChild('myModal') modalElement: any;
   @ViewChild('closeButton') closeButton: ElementRef | undefined;
-  @ViewChild('openRecipeModal') openRecipeModal: ElementRef | undefined;
+  @ViewChild('openRecipeModal') openRecipeModal: MatButton | undefined;
   recipes: Recipe[] = [];
   recipeItem: Recipe | undefined;
   isUpdate: boolean = false;
@@ -51,6 +52,7 @@ export class NewRecipeComponent {
   }
 
   ngOnInit() {
+
     this.httpService.updateRecipeItem.subscribe((data) => {
       this.recipeItem = data;
       if (
@@ -66,11 +68,11 @@ export class NewRecipeComponent {
           );
         }
       } else {
-        const newIngredientGroup = new FormGroup({
-          name: new FormControl(''),
-          amount: new FormControl(''),
-        });
-        this.recipeIngredients.push(newIngredientGroup);
+        // const newIngredientGroup = new FormGroup({
+        //   name: new FormControl(''),
+        //   amount: new FormControl(''),
+        // });
+        // this.recipeIngredients.push(newIngredientGroup);
       }
       this.form = this.fb.group({
         recipeName: [data.name],
@@ -78,8 +80,7 @@ export class NewRecipeComponent {
         imagePath: [data.imagePath],
         ingredients: this.recipeIngredients,
       });
-      console.log(this.openRecipeModal);
-      this.openRecipeModal?.nativeElement.click();
+      this.openRecipeModal?._elementRef.nativeElement.click();
       this.isUpdate = true;
     });
   }
@@ -139,5 +140,9 @@ export class NewRecipeComponent {
 
   removeIngredient(index: number) {
     this.recipeIngredients.removeAt(index);
+  }
+  CloseModal() {
+    this.form.reset();
+    this.recipeIngredients.clear();
   }
 }

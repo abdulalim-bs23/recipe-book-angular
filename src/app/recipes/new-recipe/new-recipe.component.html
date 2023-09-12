@@ -2,7 +2,7 @@
   <div class="col-md-3" style="margin-left: 70%; margin-bottom: 5%">
     <button
       type="button"
-      class="btn btn-secondary"
+      mat-raised-button
       color="primary"
       data-bs-toggle="modal"
       data-bs-target="#myModal"
@@ -13,7 +13,7 @@
     </button>
   </div>
 </div>
-<div class="modal" id="myModal" #myModal>
+<div class="modal" id="myModal" #myModal data-bs-backdrop="static">
   <div class="modal-dialog custom-modal-dialog">
     <div class="modal-content">
       <!-- Modal Header -->
@@ -26,6 +26,7 @@
           class="btn-close"
           data-bs-dismiss="modal"
           #closeButton
+          (click)="CloseModal()"
         ></button>
       </div>
 
@@ -35,7 +36,7 @@
           <form
             class="justify-content-center"
             [formGroup]="form"
-            (ngSubmit)="onSubmit()"
+            (ngSubmit)="onSubmit()" 
           >
             <div class="form-group m-2">
               <label for="recipeName">Name</label>
