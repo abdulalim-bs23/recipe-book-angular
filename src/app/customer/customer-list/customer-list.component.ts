@@ -6,5 +6,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./customer-list.component.css'],
 })
 export class CustomerListComponent {
-  customer: string = ' Customer List';
+  title: string = ' Customer List';
+
+  customer: object = {
+    name: '',
+    avatarUrl: '',
+  };
+
+  customers: any[] = [
+    {
+      name: 'Tanjim Hasan',
+      imageUrl: 'https://shorturl.at/dlzFM',
+      email: 'tanjim@gmail.com',
+    },
+    {
+      name: 'Nafiul Hamim',
+      imageUrl: 'https://shorturl.at/dlzFM',
+      email: 'nafiul@gmail.com',
+    },
+    {
+      name: 'Masud Rana',
+      imageUrl: 'https://shorturl.at/dlzFM',
+      email: 'masud@gmail.com',
+    },
+  ];
+
+  onClick(event: any): void {
+    alert(event.target.innerHTML);
+  }
 }

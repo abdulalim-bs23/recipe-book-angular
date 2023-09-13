@@ -1,0 +1,55 @@
+.row h1{
+  color: rgb(138, 5, 116);
+}
+.row h1:hover{
+ 
+ text-decoration: underline;
+}
+
+ul>li{
+  
+  color: rgb(37, 37, 37) !important;
+  padding-left: 2rem !important;
+  margin: .5rem;
+  border-radius: 10px;
+  background-color: rgb(250, 246, 246);
+  padding: 5px;
+  box-shadow: 2px 2px 5px rgba(230, 71, 71, 0.3);
+  list-style: none ;
+  width: 50%;
+  height: 10rem;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center !important;
+  cursor: pointer;
+}
+
+ul>li:hover{
+  font-weight: 400 !important;
+   background-color: rgb(250, 204, 204);
+   border-radius: 10px;
+   padding:1%;  
+  border: 1px solid rgb(246, 236, 255) !important;
+  transform: scale(1.03);
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row ;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.initials {
+  user-select: none;
+}
+
