@@ -23,19 +23,28 @@
         <li routerLinkActive="active">
           <a class="nav-link" routerLink="/shopping-list">Ingredient</a>
         </li>
-        <li >
+        <li>
           <a class="nav-link" routerLink="/customer">Customer</a>
         </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right" style="padding-left: 60%">
-        <button
-          class="btn btn-link"
-          (click)="onLogOut()"
-          style="text-decoration: none; color: aliceblue; font-weight: 400"
-        >
-          Log Out
-        </button>
+      <ul
+        id="login"
+        class="nav navbar-nav navbar-right"
+        style="padding-left: 60%"
+      >
+        <li>
+          <img class="avatar" src="https://shorturl.at/dlzFM" alt="avatar" />
+        </li>
+        <li>
+          <button
+            class="btn btn-link"
+            (click)="onLogOut()"
+            style="text-decoration: none; color: aliceblue; font-weight: 400"
+          >
+            {{ isLoggedIn ? "Log Out" : "Log In" }}
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
