@@ -17,17 +17,18 @@ const routes: Routes = [
   {
     path: 'recipes',
     component: RecipesComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     children: [{ path: ':id', component: RecipeDetailComponent }],
   },
   { path: 'recipes/:name', component: RecipesComponent },
+
   // {
   //   path: 'recipes',
   //   loadChildren: () =>
   //     import('./recipes/recipe.module').then((m) => m.RecipeModule),
   // },
 
-  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   {
     path: 'customer',
     loadChildren: () =>

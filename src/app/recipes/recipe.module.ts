@@ -8,6 +8,7 @@ import { AuthGuardService } from '../services/auth-guard.service';
 import { RecipeRoutingModule } from './recipe-routing.module';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';  
 import { SharedModule } from '../Shared/shared.module';
+import { CarouselComponent } from './carousel/carousel.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     // RecipeDetailComponent,
     // HighlightDirective,
     // NewRecipeComponent, 
+    // CarouselComponent
   ],
   imports: [
     RouterModule.forChild(routes),

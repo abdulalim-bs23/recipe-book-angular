@@ -5,15 +5,16 @@ color: rgb(255, 255, 255);
 }
 
 .avatar{
-  height: 3rem;
-  width: 3rem;
+  height: 2rem;
+  width: 2rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(21, 63, 23);
 }
 
 #login li{
   margin-left: 1rem;
-display: flex;
+  display: flex;
 }

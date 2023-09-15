@@ -20,7 +20,9 @@ import { HighlightDirective } from './Shared/highlight.directive';
 import { NewRecipeComponent } from './recipes/new-recipe/new-recipe.component';  
 import { CustomerModule } from './customer/customer.module';
 import { SharedModule } from './Shared/shared.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { CarouselComponent } from './recipes/carousel/carousel.component';
+
 
 
 @NgModule({
@@ -41,6 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RecipeDetailComponent,
     HighlightDirective,
     NewRecipeComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,8 +51,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     //RecipeModule,
     CustomerModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,4 @@
-<div *ngIf="isLoggedIn">
+<!-- <div>
   <nav
     class="navbar navbar-expand-lg navbar-dark topHeader"
     style="padding-left: 10%"
@@ -33,7 +33,7 @@
         class="nav navbar-nav navbar-right"
         style="padding-left: 60%"
       >
-        <li>
+        <li *ngIf="isLoggedIn">
           <img class="avatar" src="https://shorturl.at/dlzFM" alt="avatar" />
         </li>
         <li>
@@ -48,4 +48,37 @@
       </ul>
     </div>
   </nav>
-</div>
+</div> -->
+<c-navbar colorScheme="light" expand="lg" class="bg-light">
+  <c-container fluid>
+    <a cNavbarBrand href="https://coreui.io/angular/" target="_blank">
+      Navbar
+    </a>
+    <button [cNavbarToggler]="collapseRef"></button>
+    <div #collapseRef="cCollapse" navbar cCollapse>
+      <c-navbar-nav class="me-auto mb-2 mb-lg-0">
+        <c-nav-item>
+          <a cNavLink active>Home</a>
+        </c-nav-item>
+        <c-nav-item>
+          <a cNavLink>Link</a>
+        </c-nav-item>
+        <c-dropdown variant="nav-item" [popper]="false">
+          <a cDropdownToggle cNavLink>Dropdown</a>
+          <ul cDropdownMenu>
+            <li><button cDropdownItem>Action</button></li>
+            <li><button cDropdownItem>Another action</button></li>
+            <li><button cDropdownItem>Something else here</button></li>
+          </ul>
+        </c-dropdown>
+        <c-nav-item>
+          <a cNavLink disabled class="d-block d-lg-none d-xl-block">Disabled</a>
+        </c-nav-item>
+      </c-navbar-nav>
+      <form cForm class="d-flex" role="search">
+        <input cFormControl type="search" placeholder="Search" aria-label="Search" class="me-2">
+        <button cButton color="success" variant="outline">Search</button>
+      </form>
+    </div>
+  </c-container>
+</c-navbar>
